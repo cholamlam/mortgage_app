@@ -6,26 +6,26 @@ st.title("🏡 Mortgage Calculator")
 
 # Default values
 if "home_price" not in st.session_state:
-    st.session_state.home_price = 500000
+    st.session_state.home_price = 500000.0
 if "down_payment_usd" not in st.session_state:
-    st.session_state.down_payment_usd = 100000
+    st.session_state.down_payment_usd = 100000.0
 if "down_payment_percent" not in st.session_state:
     st.session_state.down_payment_percent = st.session_state.down_payment_usd / st.session_state.home_price * 100
 
 if "insurance_usd" not in st.session_state:
     st.session_state.insurance_usd = 5000.0
 if "insurance_percent" not in st.session_state:
-    st.session_state.insurance_percent = st.session_state.insurance_usd / st.session_state.home_price * 100, 2
+    st.session_state.insurance_percent = st.session_state.insurance_usd / st.session_state.home_price * 100
 
 # Input Home Price 
-home_price = st.number_input("Home Price (USD)", value=st.session_state.home_price, step=1000, key="home_price_input")
+home_price = st.number_input("Home Price (USD)", value=float(st.session_state.home_price), step=1000.0, key="home_price_input")
 
 # Down payment columns
 col1, col2 = st.columns(2)
 with col1:
-    down_payment_usd = st.number_input("Down Payment (USD)", value=st.session_state.down_payment_usd, step=1000, key="down_payment_usd_input")
+    down_payment_usd = st.number_input("Down Payment (USD)", value=float(st.session_state.down_payment_usd), step=1000.0, key="down_payment_usd_input")
 with col2:
-    down_payment_percent = st.number_input("Percentage (%)", value=st.session_state.down_payment_percent, step=0.25, key="down_payment_percent_input")
+    down_payment_percent = st.number_input("Percentage (%)", value=float(st.session_state.down_payment_percent), step=0.25, key="down_payment_percent_input")
 
 
 # Sync Logic
@@ -75,9 +75,9 @@ tax_rate = st.number_input("Annual property tax rate (%)", value=2.0, step=0.1)
 # Insurance columns
 col3, col4 = st.columns(2)
 with col3:
-    insurance_usd_input = st.number_input("Insurance (USD/year)", value=st.session_state.insurance_usd, step=100, key="insurance_usd_input")
+    insurance_usd_input = st.number_input("Insurance (USD/year)", value=float(st.session_state.insurance_usd), step=100.0, key="insurance_usd_input")
 with col4:
-    insurance_percent_input = st.number_input("Insurance (%)", value=st.session_state.insurance_percent, step=0.1, key="insurance_percent_input")
+    insurance_percent_input = st.number_input("Insurance (%)", value=float(st.session_state.insurance_percent), step=0.1, key="insurance_percent_input")
 
 # Insurance sync
 if st.session_state.insurance_usd_input != st.session_state.insurance_usd:
